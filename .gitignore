@@ -1,0 +1,34 @@
+# Logs
+logs
+*.log
+
+# IDE
+.idea
+.swp
+
+# npm && bower
+node_modules
+jspm_packages
+bower_components
+npm-debug.log
+debug.log
+
+# Typing
+src/typings/tsd
+typings
+tsd_typings
+
+# others
+dist
+src/**/*.js
+*.js.map
+e2e/**/*.js
+e2e/**/*.js.map
+_test-output
+_temp
+
+# Angular
+*.ngfactory.ts
+*.css.shim.ts
+*.ngsummary.json
+*.shim.ngstyle.ts
