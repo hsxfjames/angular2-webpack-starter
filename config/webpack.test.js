@@ -5,14 +5,18 @@ module.exports = {
     devtool: 'inline-source-map',
 
     resolve: {
-        extensions: ['ts', 'js']
+        extensions: ['ts', 'js'],
+        modules: [helpers.root('src'), 'node_modules']
     },
 
     module: {
-        rules: [{
+        rules: [{ // https://github.com/s-panferov/awesome-typescript-loader
             test: /\.ts$/,
             loaders: ['awesome-typescript-loader', 'angular2-template-loader']
         }, {
+            test: /\.json$/,
+            loader: 'json-loader'
+        }, { // https://github.com/webpack/json-loader
             test: /\.html$/,
             loader: 'html-loader'
         }, {
