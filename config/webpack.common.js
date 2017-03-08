@@ -32,29 +32,13 @@ module.exports = {
             test: /\.json$/,
             use: 'json-loader'
         }, {
-            /**
-            {
-                test: /\.css$/,
-                include: helpers.root('src', 'app'),
-                loader: 'raw-loader'
-            },
-            */
             test: /\.css$/,
-            exclude: helpers.root('src', 'app'),
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: 'css-loader?sourceMap'
-            })
-        }, {
+            use: ['style-loader', 'css-loader'],
+            exclude: helpers.root('src', 'styles')
+        }, { // https://github.com/webpack-contrib/sass-loader
             test: /\.scss$/,
-            exclude: helpers.root('src', 'app'),
-            use: [{
-                loader: 'style-loader'
-            }, {
-                loader: 'css-loader'
-            }, {
-                loader: 'sass-loader'
-            }]
+            use: ['style-loader', 'css-loader', 'sass-loader'],
+            exclude: helpers.root('src', 'styles')
         }, {
             test: /\.html$/,
             use: 'html-loader'

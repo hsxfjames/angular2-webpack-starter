@@ -9,33 +9,33 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 module.exports = webpackMerge(commonConfig, {
     devtool: 'source-map',
 
+    // http://webpack.github.io/docs/configuration.html#output-filename
+    // http://webpack.github.io/docs/configuration.html#output-chunkfilename
+    // http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
     output: {
         path: helpers.root('dist'),
         publicPath: '/',
-        filename: '[name].[hash].js',
-        chunkFilename: '[id].[hash].chunk.js',
-        sourceMapFilename: '[name].[hash].map'
+        filename: '[name].[chunkhash].bundle.js',
+        chunkFilename: '[id].[chunkhash].chunk.js',
+        sourceMapFilename: '[name].[chunkhash].bundle.map'
     },
 
     module: {
         rules: [{
             test: /\.css$/,
-            include: [helpers.root('src', 'app')],
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
-                use: 'css-loader'
-            })
+                use: ['css-loader', 'postcss-loader']
+            }),
+            include: [helpers.root('src', 'styles')]
         }, {
             test: /\.scss$/,
-            include: [helpers.root('src', 'app')],
             loader: ExtractTextPlugin.extract({
-                use: [{
-                    loader: 'css-loader'
-                }, {
-                    loader: 'sass-loader'
-                }],
-                fallback: 'style-loader'
-            })
+                fallback: 'style-loader',
+                // resolve-url-loader may be chained before sass-loader if necessary
+                use: ['css-loader', 'postcss-loader', 'sass-loader']
+            }),
+            include: [helpers.root('src', 'styles')]
         }]
     },
 
@@ -47,7 +47,8 @@ module.exports = webpackMerge(commonConfig, {
             },
             sourceMap: false
         }),
-        new ExtractTextPlugin('[name].[hash].css'),
+        // https://github.com/webpack-contrib/extract-text-webpack-plugin
+        new ExtractTextPlugin('[name].[contenthash].css'),
         new webpack.DefinePlugin({
             'process.env': {
                 'ENV': JSON.stringify(ENV)
