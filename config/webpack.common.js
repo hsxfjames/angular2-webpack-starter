@@ -18,6 +18,9 @@ module.exports = {
     },
     module: {
         rules: [{
+            test: /\.json$/,
+            use: 'json-loader'
+        }, {
             test: /\.ts$/,
             use: [{
                 loader: 'awesome-typescript-loader',
@@ -28,20 +31,18 @@ module.exports = {
                 loader: 'angular2-template-loader'
             }],
             exclude: [/\.(spec|e2e)\.ts$/]
-        }, {
-            test: /\.json$/,
-            use: 'json-loader'
-        }, {
+        }, { // https://github.com/webpack-contrib/style-loader/issues/123
             test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
-            exclude: helpers.root('src', 'styles')
+            use: ['to-string-loader', 'css-loader'],
+            exclude: helpers.root('src', 'theme')
         }, { // https://github.com/webpack-contrib/sass-loader
             test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
-            exclude: helpers.root('src', 'styles')
+            use: ['to-string-loader', 'css-loader', 'sass-loader'],
+            exclude: helpers.root('src', 'theme')
         }, {
             test: /\.html$/,
-            use: 'html-loader'
+            use: 'raw-loader',
+            exclude: [helpers.root('src/index.html')]
         }, {
             test: /\.ico$/,
             use: 'file-loader?name=assets/icon/[name].[hash].[ext]'

@@ -27,16 +27,16 @@ module.exports = webpackMerge(commonConfig, {
         }, {
             test: /\.css$/,
             use: ['style-loader', 'css-loader'],
-            include: helpers.root('src', 'styles')
+            include: helpers.root('src', 'theme')
         }, {
             test: /\.scss$/,
             use: ['style-loader', 'css-loader', 'sass-loader'],
-            include: helpers.root('src', 'styles')
+            include: helpers.root('src', 'theme')
         }]
     },
 
     plugins: [
-        //new ExtractTextPlugin('[name].[hash].css')
+        //new ExtractTextPlugin('[name].[contenthash].css')
     ],
 
     devServer: {

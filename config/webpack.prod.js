@@ -27,7 +27,7 @@ module.exports = webpackMerge(commonConfig, {
                 fallback: 'style-loader',
                 use: ['css-loader', 'postcss-loader']
             }),
-            include: [helpers.root('src', 'styles')]
+            include: [helpers.root('src', 'theme')]
         }, {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract({
@@ -35,7 +35,7 @@ module.exports = webpackMerge(commonConfig, {
                 // resolve-url-loader may be chained before sass-loader if necessary
                 use: ['css-loader', 'postcss-loader', 'sass-loader']
             }),
-            include: [helpers.root('src', 'styles')]
+            include: [helpers.root('src', 'theme')]
         }]
     },
 
