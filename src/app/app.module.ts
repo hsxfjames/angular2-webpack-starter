@@ -8,10 +8,10 @@ import { HttpModule }           from '@angular/http';
 import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './pages/dashboard/dashboard.component';
-import { HeroListComponent }    from './pages/hero-list/hero-list.component';
-import { HeroDetailComponent }  from './pages/hero-detail/hero-detail.component';
-import { HeroSearchComponent }  from './pages/hero-search/hero-search.component';
+import { DashboardComponent }   from './pages/dashboard';
+import { HeroListComponent }    from './pages/hero-list';
+import { HeroDetailComponent }  from './pages/hero-detail';
+import { HeroSearchComponent }  from './pages/hero-search';
 import { HeroService }          from './providers/heroes/hero.service';
 
 // Imports for loading & configuring the in-memory web api
