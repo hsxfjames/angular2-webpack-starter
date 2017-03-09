@@ -12,11 +12,11 @@ import { DashboardComponent }   from './pages/dashboard';
 import { HeroListComponent }    from './pages/hero-list';
 import { HeroDetailComponent }  from './pages/hero-detail';
 import { HeroSearchComponent }  from './pages/hero-search';
-import { HeroService }          from './providers/heroes/hero.service';
+import { HeroService }          from './providers';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './providers/in-memory-data/in-memory-data.service';
+import { InMemoryDataService }  from './providers';
 
 @NgModule({
   imports:      [
