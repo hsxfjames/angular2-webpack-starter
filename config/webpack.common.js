@@ -43,11 +43,14 @@ module.exports = {
             test: /\.html$/,
             use: 'html-loader'
         }, {
-            test: /\.(png|jpe?g|gif|ico)$/,
-            use: 'file-loader?name=assets/[name].[hash].[ext]'
+            test: /\.ico$/,
+            use: 'file-loader?name=assets/icon/[name].[hash].[ext]'
+        }, {
+            test: /\.(png|jpe?g|gif)$/,
+            use: 'file-loader?name=assets/imgs/[name].[hash].[ext]'
         }, {
             test: /\.(svg|woff2?|ttf|eot)$/,
-            use: 'file-loader?name=assets/[name].[hash].[ext]'
+            use: 'file-loader?name=assets/fonts/[name].[hash].[ext]'
         }]
     },
     plugins: [
