@@ -26,11 +26,11 @@ module.exports = webpackMerge(commonConfig, {
             exclude: /\.(spec|e2e)\.ts$/
         }, {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
+            use: ['style-loader', 'css-loader', 'postcss-loader'],
             include: helpers.root('src', 'theme')
         }, {
             test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'sass-loader'],
+            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             include: helpers.root('src', 'theme')
         }]
     },

@@ -18,9 +18,6 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.json$/,
-            use: 'json-loader'
-        }, {
             test: /\.ts$/,
             use: [{
                 loader: 'awesome-typescript-loader',
@@ -31,13 +28,16 @@ module.exports = {
                 loader: 'angular2-template-loader'
             }],
             exclude: [/\.(spec|e2e)\.ts$/]
+        }, {
+            test: /\.json$/,
+            use: 'json-loader'
         }, { // https://github.com/webpack-contrib/style-loader/issues/123
             test: /\.css$/,
-            use: ['to-string-loader', 'css-loader'],
+            use: ['to-string-loader', 'css-loader', 'postcss-loader'],
             exclude: helpers.root('src', 'theme')
         }, { // https://github.com/webpack-contrib/sass-loader
             test: /\.scss$/,
-            use: ['to-string-loader', 'css-loader', 'sass-loader'],
+            use: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             exclude: helpers.root('src', 'theme')
         }, {
             test: /\.html$/,
